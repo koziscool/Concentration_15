@@ -6,6 +6,8 @@ var matcherModel = {
 	cardValues: [ "A", "B", "C", "D", "E", "F","G", "H", "I", "J"],
 	totalCards: 0,
 
+	selectedCard: null,
+
 	init: function(size){
 		this.size = size || this.size;
 		var numPairs = Math.pow( this.size, 2) / 2;
@@ -44,6 +46,23 @@ var matcherModel = {
 		}
 	},
 
-						
-}
+	sameCard: function( id ) {
+		return this.selectedCard && this.selectedCard.id === id;					
+	},
+
+
+	getCard: function( id ) {
+		for( var index in this.cards ) {
+			if (this.cards[index].id === id) return this.cards[index];
+		}
+		return null;
+	},
+
+	setSelectedCard: function( id ) {
+		this.selectedCard = this.getCard(id);
+	},
+
+
+											
+};
 
