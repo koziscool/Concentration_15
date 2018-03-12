@@ -4,7 +4,11 @@ var matcherModel = {
 	size: 4,
 	cards: [],
 	cardValues: [ "A", "B", "C", "D", "E", "F","G", "H", "I", "J"],
+	currentId: 1,
+	numGuesses: 0,
+	matchedCards: 0,
 	totalCards: 0,
+	gameStateText: "You haven't won yet, pick a pair of cards.",
 
 	selectedCard: null,
 
@@ -62,7 +66,26 @@ var matcherModel = {
 		this.selectedCard = this.getCard(id);
 	},
 
+	valueMatch: function( card1, card2 ) {
+		return card1.value === card2.value;
+	},
+		
+	checkGuess: function(id){
+		this.numGuesses++;	
+		var secondCard = this.getCard(id);
+		
+		var isCorrect = false;		
+		if( secondCard )
+			isCorrect = this.valueMatch( secondCard, this.selectedCard );
+	
+		if( isCorrect ) this.matchedCards += 2;
+		this.selectedCard = null;
 
+		if( this.matchedCards === this.totalCards )
+			this.gameStateText = "Congratulations, you win!";
+	
+		return isCorrect;
+	},
 											
 };
 

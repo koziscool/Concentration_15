@@ -3,7 +3,12 @@ var matcherView = {
 
 	model: matcherModel,
 
-	updateGameState: function() {},
+	updateGameStateView: function() {
+		$("#game-info-text").text( this.model.gameStateText );
+		$("#num-guesses").text( this.model.numGuesses );
+		$("#matched-cards").text( this.model.matchedCards );
+		$("#total-cards").text( this.model.totalCards );
+	},
 	
 	init: function(  ) {
 		this.$grid = $("#matcher-grid");
@@ -35,6 +40,15 @@ var matcherView = {
 		$("#card-" + id).addClass( 'revealed' );
 	},
 		
+	setCorrect: function( id ) {
+		$("#card-" + id).addClass('correct');
+		$("#card-" + id).off('click');
+	},
+
+	hideCards: function(  ) {
+		$('.card').not(".correct").removeClass('revealed');
+	},
 		
+	
 	
 };

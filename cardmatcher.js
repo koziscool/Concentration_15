@@ -7,7 +7,7 @@ $(document).ready( function() {
 		var size = $("#grid-size").val();
 		$("#grid-size-form").hide();
 		matcherController.init(size);
-		matcherView.updateGameState();
+		matcherView.updateGameStateView();
 	});
 });
 	
