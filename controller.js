@@ -8,6 +8,11 @@ var matcherController = {
 		this.model.init(size);
 		this.view.init();
 	},
+
+	selectCard: function( id ) {
+		
+	},
+		
 };
 
 
